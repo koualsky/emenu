@@ -7,6 +7,9 @@ class Card(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)    # Create date if object is created. Can't update this field.
     updated_on = models.DateTimeField(auto_now=True)        # Update this field with every save method on this object.
 
+    def __str__(self):
+        return str(self.name)
+
 
 class Dish(models.Model):
     card = models.ForeignKey(Card, on_delete=models.CASCADE)
@@ -17,3 +20,6 @@ class Dish(models.Model):
     is_vegetarian = models.BooleanField()
     created_on = models.DateTimeField(auto_now_add=True)    # Create date if object is created. Can't update this field.
     updated_on = models.DateTimeField(auto_now=True)        # Update this field with every save method on this object.
+
+    def __str__(self):
+        return str(self.name)
