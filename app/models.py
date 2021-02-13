@@ -12,7 +12,7 @@ class Card(models.Model):
 
 
 class Dish(models.Model):
-    card = models.ForeignKey(Card, on_delete=models.CASCADE)
+    card = models.ForeignKey(Card, on_delete=models.CASCADE, related_name='dishes')
     name = models.CharField(max_length=200, unique=True)
     description = models.TextField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
