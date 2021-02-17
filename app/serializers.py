@@ -10,8 +10,24 @@ class DishSerializer(serializers.HyperlinkedModelSerializer):
 
 class CardSerializer(serializers.HyperlinkedModelSerializer):
     dishes = DishSerializer(many=True, read_only=True)
+    total_dishes = serializers.SerializerMethodField()
 
     class Meta:
         model = Card
-        # fields = '__all__'
-        fields = ('name', 'description', 'created_on', 'updated_on', 'dishes')
+        fields = ('url', 'name', 'description', 'created_on', 'updated_on', 'total_dishes', 'dishes')
+
+    @staticmethod
+    def get_total_dishes(obj):
+        return obj.dishes.count()
+
+
+class CardSerializerList(serializers.HyperlinkedModelSerializer):
+    total_dishes = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Card
+        fields = ('url', 'name', 'description', 'created_on', 'updated_on', 'total_dishes')
+
+    @staticmethod
+    def get_total_dishes(obj):
+        return obj.dishes.count()
