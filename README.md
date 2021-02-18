@@ -22,7 +22,7 @@ and select what would you like to add (Card or Dish). Now just fill up the form 
 You can filter results by adding `GET` parameters to the url.
 Filtering works only for cards: [0.0.0.0:8002/api/cards/?name=asc](https://0.0.0.0:8002/api/cards/?name=asc)
 
-####Allowed filters:
+#### Allowed filters:
 `name` - filtering by name
 `dish` - filtering by number of dishes in card
 `created_on` - filtering by created date
